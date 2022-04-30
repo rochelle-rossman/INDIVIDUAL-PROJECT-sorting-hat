@@ -1,0 +1,94 @@
+body {
+  background-color: antiquewhite;
+}
+
+h1{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+#sortingHat {
+  display: flex;
+  justify-content: center;
+}
+
+
+.img {
+  align-self: center;
+  object-fit: cover;
+  height: 250px;
+  width: 525px;
+  margin: 10px;
+  border: solid 1px black;
+}
+
+.btn-sort { 
+  width:525px;
+}
+
+#filterButtons {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+
+}
+
+#students {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  row-gap: 10px;
+  column-gap: 10px;
+  margin: 10px;
+}
+
+button#all {
+  background-color: darkgray;
+  color:white;
+}
+
+#header-for-Gryffindor {
+  background-color: gold;
+  color: white;
+}
+
+button#gryffindor {
+background-color: gold;
+color: white;
+}
+
+#header-for-Hufflepuff {
+  background-color: red;
+  color: white;
+}
+
+button#hufflepuff {
+  background-color: red;
+  color: white;
+}
+
+#header-for-Ravenclaw {
+  background-color: purple;
+  color: white;
+}
+
+button#ravenclaw {
+  background-color: purple;
+  color: white;
+}
+
+#header-for-Slytherin {
+  background-color: green;
+  color: white;
+}
+
+button#slytherin {
+  background-color: green;
+  color: white;
+}
+
+button#voldemort {
+  background-color: black;
+  color: white;
+}
