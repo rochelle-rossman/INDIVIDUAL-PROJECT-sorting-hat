@@ -21,6 +21,10 @@ const data = [
 	}
 ];
 
+const houses = ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"];
+newUser = [];
+voldemortArmy = [];
+
 
 const giveID = () => {
   data.forEach((student, index) => {
@@ -43,7 +47,7 @@ const sortingHat = () => {
    Let's get sorted!
   </div>
   <div class="card-body">
-    <img class ="img" src="https://i0.wp.com/bookstacked.com/wp-content/uploads/2016/01/Pottermore-Sorting-Hat.jpg?fit=1200%2C679&ssl=1">
+    <img class ="img" src="https://jonnegroni.com/wp-content/uploads/2016/10/harry-potter1-disneyscreencaps-com-5582.jpg">
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
    <button type="button" class="btn-sort" data-bs-toggle="modal" data-bs-target="#sort">
     Sort
@@ -60,13 +64,13 @@ const sortingHat = () => {
           </div>
           <div class="modal-body" id="modal-body">
         
-         <form>
-          <div class="form-floating mb-3">
-            <input class="form-control form-control-lg" type="text" placeholder="Name" id="student" aria-label="student" required>
-            <label for="studentId">Student's Name</label>
-          </div>
-          <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Submit</button>
-        </form>
+      <form>
+        <div class="form-floating">
+        <label for="exampleFormControlInput1" class="form-label">Name</label>
+      <input class="form-control" placeholder="Enter Your Name Here" id="nameInputTextArea" required></input>
+    </div>
+    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Sort Me!</button>
+  </form>
           
       </div>
     </div>
@@ -81,15 +85,13 @@ const renderButtons = () => {
               <button type="button" id="gryffindor">Gryffindor</button>
               <button type="button" id="ravenclaw">Ravenclaw</button>
               <button type="button" id="hufflepuff">Hufflepuff</button>
-              <button type="button" id="slytherin">Slytherin</button>
-              <button type="button" id="voldemort">Voldemort's Army</button>
-              `;
+              <button type="button" id="slytherin">Slytherin</button>`;
   renderToDom("#filterButtons", domString);
 }
 
-const cardsOnDom = (taco) => {
+const cardsOnDom = (arr, divId) => {
   let domString = "";
-  for (const student of taco) {
+  for (const student of arr) {
     domString += `<div class="card">
   <div id="header-for-${student.house}" class="card-header">
     ${student.house}
@@ -100,7 +102,7 @@ const cardsOnDom = (taco) => {
   </div>
 </div>`;
   }
-  renderToDom("#students", domString);
+  renderToDom(divId, domString);
 };
 
 // Event Listeners
@@ -108,13 +110,10 @@ function eventListeners() {
 
   document.querySelector('#filterButtons').addEventListener('click', (e) => {
     if (e.target.id === "all") {
-      cardsOnDom(data);
+      cardsOnDom(data, "#students");
     } else if (e.target.id) {
       const house = data.filter((taco) => taco.house.toLowerCase() === e.target.id);
-      cardsOnDom(house);
-    } else if (e.target.id === "voldemort") {
-      const army = document.querySelector("#voldemort");
-      cardsOnDom(army);
+      cardsOnDom(house, "#students");
     }
   });
 
@@ -122,17 +121,34 @@ function eventListeners() {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     newStudent = {
-      name: document.querySelector("#name").value
+      name: document.querySelector("#nameInputTextArea").value,
+      house: houses[Math.floor(Math.random() * 4)],
     },
-    data.push(newStudent);
-    cardsOnDom(data);
+      data.push(newStudent);
+      newUser.push(newStudent);
+      giveID();
+      cardsOnDom(data, "#students");
+      cardsOnDom(newUser, "#newStudents");
+      renderButtons();
+});
 
 
-  })
+  document.querySelector("#students").addEventListener("click", (e) => {
+    if (e.target.id === "expel") {
+      const [method, studentId] = e.target.id.split("--");
+      const index = data.findIndex((taco) => taco.id === parseInt(studentId));
+      voldemortArmy.push(...data.splice(index, 1));
+      alert
+      cardsOnDom(voldemortArmy, "#voldemort");
+      cardsOnDom(data, "#students");
+    }
+  });
+  
 }
+function startApp() {
+  sortingHat();
+  giveID();
+  eventListeners();
+};
 
-sortingHat();
-// renderButtons();
-// cardsOnDom(data);
-giveID();
-eventListeners();
+startApp();

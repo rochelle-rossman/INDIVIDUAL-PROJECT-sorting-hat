@@ -43,6 +43,24 @@ h1{
   margin: 10px;
 }
 
+#newStudents {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  row-gap: 10px;
+  column-gap: 10px;
+  margin: 10px;
+}
+
+#voldemort {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  row-gap: 10px;
+  column-gap: 10px;
+  margin: 10px;
+}
+
 button#all {
   background-color: darkgray;
   color:white;
