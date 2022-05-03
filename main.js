@@ -44,13 +44,13 @@ const sortingHat = () => {
   let domString = "";
   domString = `<div class="card">
   <div class="card-header">
-   Let's get sorted!
+   Welcome to Hogwarts.
   </div>
   <div class="card-body">
-    <img class ="img" src="https://jonnegroni.com/wp-content/uploads/2016/10/harry-potter1-disneyscreencaps-com-5582.jpg">
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <img class ="img" src="https://c.tenor.com/9ugA1uLnLMgAAAAC/hat-sorting.gif">
+    <p class="card-text">'The start-of-term banquet will begin shortly, but before you take your seats in the Great Hall, you will be sorted into your houses. The Sorting is a very important ceremony because, while you are here, your house will be something like your family within Hogwarts.'</p>
    <button type="button" class="btn-sort" data-bs-toggle="modal" data-bs-target="#sort">
-    Sort
+    Place the hat onto your head and I will place you into your house.
     </button>
   </div>
 </div>
@@ -76,6 +76,10 @@ const sortingHat = () => {
     </div>
   </div>`;
   renderToDom("#sortingHat", domString);
+};
+
+function hideHat() {
+  
 };
 
 const renderButtons = () => {
@@ -124,11 +128,12 @@ function eventListeners() {
       name: document.querySelector("#nameInputTextArea").value,
       house: houses[Math.floor(Math.random() * 4)],
     },
+      // hideHat();
       data.push(newStudent);
       newUser.push(newStudent);
       giveID();
       cardsOnDom(data, "#students");
-      cardsOnDom(newUser, "#newStudents");
+      // cardsOnDom(newUser, "#newStudents");
       renderButtons();
 });
 

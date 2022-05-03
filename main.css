@@ -1,11 +1,17 @@
 body {
-  background-color: antiquewhite;
+  background-image: url(https://wallpapercave.com/wp/wp2638549.jpg);
+  background-repeat: no-repeat;
+  background-size:cover;
+  font-family: 'Cormorant Garamond', serif;
 }
 
-h1{
+#header-img {
   display: flex;
   justify-content: center;
-  text-align: center;
+}
+img {
+  height: 350px;
+  width: 350px;
 }
 
 #sortingHat {
@@ -13,6 +19,11 @@ h1{
   justify-content: center;
 }
 
+.card-header {
+  text-align: center;
+  font-weight: 700;
+  font-size: 24px;
+}
 
 .img {
   align-self: center;
@@ -23,8 +34,14 @@ h1{
   border: solid 1px black;
 }
 
+.card-text {
+  align-self: center;
+  width: 525px;
+}
+
 .btn-sort { 
   width:525px;
+  font-weight: 700;
 }
 
 #filterButtons {
@@ -34,10 +51,17 @@ h1{
 
 }
 
+#cardContainer{
+  display: flex;
+  flex-flow: row wrap;
+}
+
 #students {
   display: flex;
   flex-flow: row wrap;
+  align-items: flex-start;
   justify-content: center;
+  flex-grow: 1;
   row-gap: 10px;
   column-gap: 10px;
   margin: 10px;
