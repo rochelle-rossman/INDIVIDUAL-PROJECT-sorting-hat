@@ -78,9 +78,6 @@ const sortingHat = () => {
   renderToDom("#sortingHat", domString);
 };
 
-function hideHat() {
-  
-};
 
 const renderButtons = () => {
   let domString = "";
@@ -142,10 +139,11 @@ function eventListeners() {
     if (e.target.id === "expel") {
       const [method, studentId] = e.target.id.split("--");
       const index = data.findIndex((taco) => taco.id === parseInt(studentId));
-      voldemortArmy.push(...data.splice(index, 1));
-      alert
+      const student = data.splice(index, 1);
+      voldemortArmy.push(...student);
       cardsOnDom(voldemortArmy, "#voldemort");
       cardsOnDom(data, "#students");
+      alert(`${student[0].name} has been expelled from Hogwarts and sent to Voldemort's Army!`);
     }
   });
   
