@@ -99,7 +99,7 @@ const cardsOnDom = (arr, divId) => {
   </div>
   <div class="card-body">
     <h5 id="name" class="card-title">${student.name}</h5>
-    <a href="#" id="expel" class="btn btn-danger">Expel</a>
+    <a href="#" id="expel--${student.id}" class="btn btn-danger">Expel</a>
   </div>
 </div>`;
   }
@@ -136,9 +136,16 @@ function eventListeners() {
 
 
   document.querySelector("#students").addEventListener("click", (e) => {
-    if (e.target.id === "expel") {
+    if (e.target.id.includes("expel")) {
       const [method, studentId] = e.target.id.split("--");
-      const index = data.findIndex((taco) => taco.id === parseInt(studentId));
+      const index = data.findIndex((taco) => {
+        console.log(taco.id);
+        console.log(studentId);
+        return taco.id === parseInt(studentId)
+        
+      });
+      
+      console.log(index);
       const student = data.splice(index, 1);
       voldemortArmy.push(...student);
       cardsOnDom(voldemortArmy, "#voldemort");
