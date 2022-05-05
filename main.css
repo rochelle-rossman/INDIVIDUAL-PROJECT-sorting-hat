@@ -39,6 +39,12 @@ img {
   width: 525px;
 }
 
+#btn-sort {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+
 .btn-sort { 
   width:525px;
   font-weight: 700;
@@ -133,4 +139,8 @@ button#slytherin {
 button#voldemort {
   background-color: black;
   color: white;
+}
+
+.btn.btn-primary {
+  margin: 10px;
 }

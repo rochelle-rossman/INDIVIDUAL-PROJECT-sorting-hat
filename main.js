@@ -46,12 +46,12 @@ const sortingHat = () => {
   <div class="card-header">
    Welcome to Hogwarts.
   </div>
-  <div class="card-body">
+  <div id="card-body" class="card-body">
     <img class ="img" src="https://c.tenor.com/9ugA1uLnLMgAAAAC/hat-sorting.gif">
-    <p class="card-text">'The start-of-term banquet will begin shortly, but before you take your seats in the Great Hall, you will be sorted into your houses. The Sorting is a very important ceremony because, while you are here, your house will be something like your family within Hogwarts.'</p>
-   <button type="button" class="btn-sort" data-bs-toggle="modal" data-bs-target="#sort">
+    <p class="card-text">'The start-of-term banquet will begin shortly, but before you take your seats in the Great Hall, you will be sorted into your houses. The Sorting is a very important ceremony because, while you are here, your house will be something like your family within Hogwarts.'</p></div>
+   <div id="btn-sort"><button type="button" class="btn-sort" data-bs-toggle="modal" data-bs-target="#sort">
     Place the hat onto your head and I will place you into your house.
-    </button>
+    </button></div>
   </div>
 </div>
     <!-- Modal -->
@@ -61,16 +61,13 @@ const sortingHat = () => {
           <div class="modal-header">
             <h5 class="modal-title">Let's get sorted!</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body" id="modal-body">
+  </div>
+  <div class="modal-body" id="modal-body">
         
       <form>
-        <div class="form-floating">
-        <label for="exampleFormControlInput1" class="form-label">Name</label>
-      <input class="form-control" placeholder="Enter Your Name Here" id="nameInputTextArea" required></input>
-    </div>
-    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Sort Me!</button>
-  </form>
+        <input class="form-control" type="text" placeholder="Enter Your Name Here" id="nameInputTextArea" required></input>
+        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Sort Me!</button>
+      </form>
           
       </div>
     </div>
@@ -125,12 +122,11 @@ function eventListeners() {
       name: document.querySelector("#nameInputTextArea").value,
       house: houses[Math.floor(Math.random() * 4)],
     },
-      // hideHat();
+      document.querySelector("#card-body").style.display = "none";
       data.push(newStudent);
       newUser.push(newStudent);
       giveID();
       cardsOnDom(data, "#students");
-      // cardsOnDom(newUser, "#newStudents");
       renderButtons();
 });
 
@@ -139,22 +135,18 @@ function eventListeners() {
     if (e.target.id.includes("expel")) {
       const [method, studentId] = e.target.id.split("--");
       const index = data.findIndex((taco) => {
-        console.log(taco.id);
-        console.log(studentId);
         return taco.id === parseInt(studentId)
-        
       });
-      
-      console.log(index);
       const student = data.splice(index, 1);
       voldemortArmy.push(...student);
       cardsOnDom(voldemortArmy, "#voldemort");
       cardsOnDom(data, "#students");
       alert(`${student[0].name} has been expelled from Hogwarts and sent to Voldemort's Army!`);
-    }
+    };
   });
   
-}
+};
+
 function startApp() {
   sortingHat();
   giveID();
