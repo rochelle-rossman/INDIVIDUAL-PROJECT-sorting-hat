@@ -1,7 +1,7 @@
 body {
   background-image: url(https://wallpapercave.com/wp/wp2638549.jpg);
-  background-repeat: no-repeat;
-  background-size:cover;
+  background-position: center;
+  background-attachment: fixed;
   font-family: 'Cormorant Garamond', serif;
 }
 
@@ -9,23 +9,30 @@ body {
   display: flex;
   justify-content: center;
 }
+
+#house-crest {
+  height: 300px;
+  width: 300px;
+}
+
 img {
-  height: 350px;
-  width: 350px;
+  height: 200px;
+  width: 200px;
 }
 
 #sortingHat {
   display: flex;
   justify-content: center;
+  margin: 10px;
 }
 
-.card-header {
-  text-align: center;
-  font-weight: 700;
+#card-header {
   font-size: 36px;
+  font-weight: 700;
+  text-align: center;
 }
 
-.img {
+#gif {
   align-self: center;
   object-fit: cover;
   height: 250px;
@@ -34,20 +41,19 @@ img {
   border: solid 1px black;
 }
 
+
+
 .card-text {
   align-self: center;
   width: 525px;
-}
-
-#btn-sort {
-  display: flex;
-  justify-content: center;
-  padding: 5px;
+  font-size: large;
 }
 
 .btn-sort { 
-  width:525px;
+  /* width:525px; */
   font-weight: 700;
+  font-size:larger;
+  margin: 5px;
 }
 
 #filterButtons {
@@ -57,38 +63,47 @@ img {
 
 }
 
-#cardContainer{
-  display: flex;
-  flex-flow: row wrap;
-}
 
 #students {
   display: flex;
   flex-flow: row wrap;
-  align-items: flex-start;
-  justify-content: left;
-  flex-grow: 1;
+  justify-content: flex-start;
   row-gap: 10px;
   column-gap: 10px;
   margin: 10px;
 }
 
-#newStudents {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  row-gap: 10px;
-  column-gap: 10px;
-  margin: 10px;
-}
 
 #voldemort {
   display: flex;
   flex-flow: row wrap;
-  justify-content: right;
+  justify-content: flex-start;
   row-gap: 10px;
   column-gap: 10px;
   margin: 10px;
+}
+
+#card-body {
+  display: flex;
+  justify-content: flex-end;
+  align-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.card-body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  align-items: center;
+}
+
+#btn-sort {
+  display: flex;
+  justify-content: center;
+  margin: 2px;
 }
 
 button#all {
@@ -96,28 +111,13 @@ button#all {
   color:white;
 }
 
-#header-for-Gryffindor {
-  background-color: gold;
-  color: white;
-}
-
 button#gryffindor {
 background-color: gold;
 color: white;
 }
 
-#header-for-Hufflepuff {
-  background-color: red;
-  color: white;
-}
-
 button#hufflepuff {
   background-color: red;
-  color: white;
-}
-
-#header-for-Ravenclaw {
-  background-color: purple;
   color: white;
 }
 
@@ -126,21 +126,15 @@ button#ravenclaw {
   color: white;
 }
 
-#header-for-Slytherin {
-  background-color: green;
-  color: white;
-}
-
 button#slytherin {
   background-color: green;
   color: white;
 }
 
-button#voldemort {
-  background-color: black;
-  color: white;
-}
-
 .btn.btn-primary {
   margin: 10px;
+}
+
+#nameInputTextArea {
+  padding: 5px;
 }

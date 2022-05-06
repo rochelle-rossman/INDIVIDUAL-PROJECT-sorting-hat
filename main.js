@@ -42,12 +42,12 @@ const renderToDom = (divId, textToRender) => {
 
 const sortingHat = () => {
   let domString = "";
-  domString = `<div class="card">
-  <div class="card-header">
+  domString = `<div id="intro" class="card">
+  <div id="card-header" class="card-header">
    Welcome to Hogwarts.
   </div>
   <div id="card-body" class="card-body">
-    <img class ="img" src="https://c.tenor.com/9ugA1uLnLMgAAAAC/hat-sorting.gif">
+    <img id="gif" class ="img" src="https://c.tenor.com/9ugA1uLnLMgAAAAC/hat-sorting.gif">
     <p class="card-text">'The start-of-term banquet will begin shortly, but before you take your seats in the Great Hall, you will be sorted into your houses. The Sorting is a very important ceremony because, while you are here, your house will be something like your family within Hogwarts.'</p></div>
    <div id="btn-sort"><button type="button" class="btn-sort" data-bs-toggle="modal" data-bs-target="#sort">
     Place the hat onto your head and I will place you into your house.
@@ -90,13 +90,36 @@ const renderButtons = () => {
 const cardsOnDom = (arr, divId) => {
   let domString = "";
   for (const student of arr) {
+    const gryffindor = student.house === "Gryffindor";
+    const hufflepuff = student.house === "Hufflepuff";
+    const ravenclaw = student.house === "Ravenclaw";
+    const slytherin = student.house === "Slytherin";
     domString += `<div class="card">
-  <div id="header-for-${student.house}" class="card-header">
-    ${student.house}
+  <div id="header" class="card-header">
+     <img src=${gryffindor ? "https://cdn.shopify.com/s/files/1/1756/9559/products/gryffindor_coaster_photo_480x480.jpg?v=1573583163" : ""} 
+     ${hufflepuff ? "https://cdn.shopify.com/s/files/1/1756/9559/products/hufflepuff_coaster_photo_480x480.jpg?v=1573583811" : ""} 
+    ${ravenclaw ? "https://cdn.shopify.com/s/files/1/1756/9559/products/raven_claw_coaster_photo_480x480.jpg?v=1573582005" : ""} 
+    ${slytherin ? "https://cdn.shopify.com/s/files/1/1756/9559/products/slytherin_coaster_photo_480x480.jpg?v=1573583538" : ""
+    } alt="...">
   </div>
   <div class="card-body">
     <h5 id="name" class="card-title">${student.name}</h5>
-    <a href="#" id="expel--${student.id}" class="btn btn-danger">Expel</a>
+    <a href="#" id="expel--${student.id}" class="btn btn-danger">Expel from Hogwarts</a>
+  </div>
+</div>`;
+  }
+  renderToDom(divId, domString);
+};
+
+const moldyVoldy = (arr, divId) => {
+  let domString = "";
+  for (const student of arr) {
+    domString += `<div class="card">
+  <div id="header-for-voldemortArmy" class="card-header">
+    <img src="https://i.pinimg.com/564x/32/ec/f4/32ecf483561b7db87d6f67f0955caeb4--hd-wallpaper-wallpapers.jpg">
+  </div>
+  <div class="card-body">
+    <h5 id="name" class="card-title">${student.name}</h5>
   </div>
 </div>`;
   }
@@ -122,7 +145,9 @@ function eventListeners() {
       name: document.querySelector("#nameInputTextArea").value,
       house: houses[Math.floor(Math.random() * 4)],
     },
+      document.querySelector("#card-header").style.display = "none";
       document.querySelector("#card-body").style.display = "none";
+      document.querySelector("#header-img").style.display = "none";
       data.push(newStudent);
       newUser.push(newStudent);
       giveID();
@@ -139,7 +164,7 @@ function eventListeners() {
       });
       const student = data.splice(index, 1);
       voldemortArmy.push(...student);
-      cardsOnDom(voldemortArmy, "#voldemort");
+      moldyVoldy(voldemortArmy, "#voldemort");
       cardsOnDom(data, "#students");
       alert(`${student[0].name} has been expelled from Hogwarts and sent to Voldemort's Army!`);
     };
