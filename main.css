@@ -2,7 +2,7 @@ body {
   background-image: url(https://wallpapercave.com/wp/wp2638549.jpg);
   background-position: center;
   background-attachment: fixed;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: "Cormorant Garamond", serif;
 }
 
 #header-img {
@@ -41,18 +41,16 @@ img {
   border: solid 1px black;
 }
 
-
-
 .card-text {
   align-self: center;
   width: 525px;
   font-size: large;
 }
 
-.btn-sort { 
+.btn-sort {
   /* width:525px; */
   font-weight: 700;
-  font-size:larger;
+  font-size: larger;
   margin: 5px;
 }
 
@@ -60,9 +58,7 @@ img {
   display: flex;
   justify-content: center;
   margin: 10px;
-
 }
-
 
 #students {
   display: flex;
@@ -72,7 +68,6 @@ img {
   column-gap: 10px;
   margin: 10px;
 }
-
 
 #voldemort {
   display: flex;
@@ -108,12 +103,12 @@ img {
 
 button#all {
   background-color: darkgray;
-  color:white;
+  color: white;
 }
 
 button#gryffindor {
-background-color: gold;
-color: white;
+  background-color: gold;
+  color: white;
 }
 
 button#hufflepuff {

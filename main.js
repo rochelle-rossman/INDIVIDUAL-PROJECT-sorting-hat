@@ -1,37 +1,35 @@
 const data = [
-	{
-		name: "Omar Moses",
-		house: "Gryffindor",
-	},
-	{
-		name: "Salvador Mayo",
-		house: "Gryffindor",
-	},
-	{
-		name: "Zachery Vaughn",
-		house: "Slytherin",
-	},
-	{
-		name: "Xena Palmer",
-		house: "Hufflepuff",
-	},
-	{
-		name: "Clare Fisher",
-		house: "Gryffindor",
-	}
+  {
+    name: "Omar Moses",
+    house: "Gryffindor",
+  },
+  {
+    name: "Salvador Mayo",
+    house: "Gryffindor",
+  },
+  {
+    name: "Zachery Vaughn",
+    house: "Slytherin",
+  },
+  {
+    name: "Xena Palmer",
+    house: "Hufflepuff",
+  },
+  {
+    name: "Clare Fisher",
+    house: "Gryffindor",
+  },
 ];
 
 const houses = ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"];
 newUser = [];
 voldemortArmy = [];
 
-
 const giveID = () => {
   data.forEach((student, index) => {
     student.id = index + 1;
-  }); 
-  
-}
+  });
+};
 
 let domString = "";
 //UTILITY FUNCTION
@@ -75,7 +73,6 @@ const sortingHat = () => {
   renderToDom("#sortingHat", domString);
 };
 
-
 const renderButtons = () => {
   let domString = "";
   domString = `
@@ -85,7 +82,7 @@ const renderButtons = () => {
               <button type="button" id="hufflepuff">Hufflepuff</button>
               <button type="button" id="slytherin">Slytherin</button>`;
   renderToDom("#filterButtons", domString);
-}
+};
 
 const cardsOnDom = (arr, divId) => {
   let domString = "";
@@ -96,15 +93,32 @@ const cardsOnDom = (arr, divId) => {
     const slytherin = student.house === "Slytherin";
     domString += `<div class="card">
   <div id="header" class="card-header">
-     <img src=${gryffindor ? "https://cdn.shopify.com/s/files/1/1756/9559/products/gryffindor_coaster_photo_480x480.jpg?v=1573583163" : ""} 
-     ${hufflepuff ? "https://cdn.shopify.com/s/files/1/1756/9559/products/hufflepuff_coaster_photo_480x480.jpg?v=1573583811" : ""} 
-    ${ravenclaw ? "https://cdn.shopify.com/s/files/1/1756/9559/products/raven_claw_coaster_photo_480x480.jpg?v=1573582005" : ""} 
-    ${slytherin ? "https://cdn.shopify.com/s/files/1/1756/9559/products/slytherin_coaster_photo_480x480.jpg?v=1573583538" : ""
+     <img src=${
+       gryffindor
+         ? "https://cdn.shopify.com/s/files/1/1756/9559/products/gryffindor_coaster_photo_480x480.jpg?v=1573583163"
+         : ""
+     } 
+     ${
+       hufflepuff
+         ? "https://cdn.shopify.com/s/files/1/1756/9559/products/hufflepuff_coaster_photo_480x480.jpg?v=1573583811"
+         : ""
+     } 
+    ${
+      ravenclaw
+        ? "https://cdn.shopify.com/s/files/1/1756/9559/products/raven_claw_coaster_photo_480x480.jpg?v=1573582005"
+        : ""
+    } 
+    ${
+      slytherin
+        ? "https://cdn.shopify.com/s/files/1/1756/9559/products/slytherin_coaster_photo_480x480.jpg?v=1573583538"
+        : ""
     } alt="...">
   </div>
   <div class="card-body">
     <h5 id="name" class="card-title">${student.name}</h5>
-    <a href="#" id="expel--${student.id}" class="btn btn-danger">Expel from Hogwarts</a>
+    <a href="#" id="expel--${
+      student.id
+    }" class="btn btn-danger">Expel from Hogwarts</a>
   </div>
 </div>`;
   }
@@ -128,12 +142,13 @@ const moldyVoldy = (arr, divId) => {
 
 // Event Listeners
 function eventListeners() {
-
-  document.querySelector('#filterButtons').addEventListener('click', (e) => {
+  document.querySelector("#filterButtons").addEventListener("click", (e) => {
     if (e.target.id === "all") {
       cardsOnDom(data, "#students");
     } else if (e.target.id) {
-      const house = data.filter((taco) => taco.house.toLowerCase() === e.target.id);
+      const house = data.filter(
+        (taco) => taco.house.toLowerCase() === e.target.id
+      );
       cardsOnDom(house, "#students");
     }
   });
@@ -141,41 +156,41 @@ function eventListeners() {
   const form = document.querySelector("form");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    newStudent = {
+    (newStudent = {
       name: document.querySelector("#nameInputTextArea").value,
       house: houses[Math.floor(Math.random() * 4)],
-    },
-      document.querySelector("#card-header").style.display = "none";
-      document.querySelector("#card-body").style.display = "none";
-      document.querySelector("#header-img").style.display = "none";
-      data.push(newStudent);
-      newUser.push(newStudent);
-      giveID();
-      cardsOnDom(data, "#students");
-      renderButtons();
-});
-
+    }),
+      (document.querySelector("#card-header").style.display = "none");
+    document.querySelector("#card-body").style.display = "none";
+    document.querySelector("#header-img").style.display = "none";
+    data.push(newStudent);
+    newUser.push(newStudent);
+    giveID();
+    cardsOnDom(data, "#students");
+    renderButtons();
+  });
 
   document.querySelector("#students").addEventListener("click", (e) => {
     if (e.target.id.includes("expel")) {
       const [method, studentId] = e.target.id.split("--");
       const index = data.findIndex((taco) => {
-        return taco.id === parseInt(studentId)
+        return taco.id === parseInt(studentId);
       });
       const student = data.splice(index, 1);
       voldemortArmy.push(...student);
       moldyVoldy(voldemortArmy, "#voldemort");
       cardsOnDom(data, "#students");
-      alert(`${student[0].name} has been expelled from Hogwarts and sent to Voldemort's Army!`);
-    };
+      alert(
+        `${student[0].name} has been expelled from Hogwarts and sent to Voldemort's Army!`
+      );
+    }
   });
-  
-};
+}
 
 function startApp() {
   sortingHat();
   giveID();
   eventListeners();
-};
+}
 
 startApp();
