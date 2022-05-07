@@ -160,7 +160,7 @@ function eventListeners() {
       name: document.querySelector("#nameInputTextArea").value,
       house: houses[Math.floor(Math.random() * 4)],
     }),
-      (document.querySelector("#card-header").style.display = "none");
+    document.querySelector("#card-header").style.display = "none";
     document.querySelector("#card-body").style.display = "none";
     document.querySelector("#header-img").style.display = "none";
     data.push(newStudent);
